@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('breeding', function (Blueprint $table) {
+        Schema::table('breedings', function (Blueprint $table) {
             $table->bigInteger('id_supplier')->unsigned();
             $table->foreign('id_supplier')
                   ->references('id')
@@ -28,7 +28,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('breeding', function (Blueprint $table) {
+        Schema::table('breedings', function (Blueprint $table) {
             //
         });
     }
