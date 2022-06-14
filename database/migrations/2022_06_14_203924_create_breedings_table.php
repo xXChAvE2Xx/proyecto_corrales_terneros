@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('breedings', function (Blueprint $table) {
             $table->id();
+            $table->float('weight');
+            $table->float('cost');
+            $table->string('description');
+            $table->integer('color_muscle');
+            $table->integer('marbling');
             $table->timestamps();
         });
     }
