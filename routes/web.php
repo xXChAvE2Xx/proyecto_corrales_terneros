@@ -22,6 +22,9 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/breeding', [App\Http\Controllers\BreedingController::class, 'index'])->name('breeding.index')->middleware('auth');
+Route::post('/breeding', [App\Http\Controllers\BreedingController::class, 'store'])->name('breeding');
+
+
 
 Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'index'])->name('register');
 
