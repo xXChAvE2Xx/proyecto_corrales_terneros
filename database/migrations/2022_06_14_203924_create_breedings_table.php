@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('description');
             $table->integer('color_muscle');
             $table->integer('marbling');
+            $table->integer('quarantine')->unsigned()->default(0);
             $table->timestamps();
         });
     }
