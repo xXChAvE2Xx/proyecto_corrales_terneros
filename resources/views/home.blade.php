@@ -12,9 +12,9 @@
                         <p class="card-text">{{$breeding->description}}</p>
                     </div>
                     <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Fecha: {{$breeding->created_at}}</li>
                         <li class="list-group-item">Costo: {{$breeding->cost}} pesos</li>
                         <li class="list-group-item">Peso: {{$breeding->weight}} kg</li>
-                        <li class="list-group-item">Grasa tipo {{$breeding->color_muscle}}</li>
                         <li class="list-group-item">Grasa tipo {{$breeding->color_muscle}}</li>
                     </ul>
                     <div class="card-body">
