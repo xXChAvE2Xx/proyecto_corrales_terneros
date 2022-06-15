@@ -61,7 +61,7 @@
                     <label for="descripcion" class="form-label">Descripcion</label>
                     <textarea class="form-control" name="descripcion" rows="3">{{ $breeding->description }}</textarea>
                 </div>
-                <button class="btn btn-primary">Editar cria</button>
+                <button class="btn btn-primary">Editar cría</button>
                 <a class="btn btn-secondary" href="{{ route('home') }}">Regresar</a>
             </form>
         </div>
