@@ -14,7 +14,7 @@
             <li class="list-group-item">Color de Musculo: {{$breeding->color_muscle}}</li>
             <li class="list-group-item">Marmoleo: Calidad {{$breeding->marbling}}</li>
             <li class="list-group-item">Descripción: {{$breeding->description}}</li>
-            <li class="list-group-item">Fecha de registro: {{  }}</li>
+            <li class="list-group-item">Fecha de registro: {{ date_format($breeding->created_at,"d/m/Y H:i:s"); }}</li>
             <li class="list-group-item">Proveedor: {{$supplie->name}}</li>
         </ul>
     </div>
