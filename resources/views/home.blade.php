@@ -22,11 +22,6 @@
                     <div class="card-body">
                         <div class="btn-group-vertical justify-content-center" role="group">
                             <a href="{{ route('breeding.show', ['id' => $breeding->id]) }}" class="btn btn-primary">Ver más información</a>
-
-                            @if (Auth::user()->id_position == 2)
-                                <a href="" class="btn btn-warning">Marcar como enferma</a>
-                            @endif
-
                             @if (Auth::user()->id_position == 1)
                                 <a href="{{ route('breeding.edit', ['id' => $breeding->id]) }}" class="btn btn-secondary"><i class="fa fa-pencil-square-o"></i> Editar</a>
                             @endif

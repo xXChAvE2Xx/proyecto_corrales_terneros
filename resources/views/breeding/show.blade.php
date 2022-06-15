@@ -3,6 +3,14 @@
 @section('content')
 <div class="container">
   <div class="row">
+    @if (session('success'))
+        <h6 class="alert alert-success">{{ session('success') }}</h6> 
+    @endif
+
+    @if ($breeding->quarantine == 1)
+        <h6 class="alert alert-warning">Esta cría se encuentra en cuarentena desde el {{date_format($breeding->updated_at,"d/m/Y");}}</h6> 
+    @endif
+
     <div class="col">
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Example_image.svg/600px-Example_image.svg.png">
     </div>
@@ -16,6 +24,7 @@
             <li class="list-group-item">Descripción: {{$breeding->description}}</li>
             <li class="list-group-item">Fecha de registro: {{ date_format($breeding->created_at,"d/m/Y H:i:s"); }}</li>
             <li class="list-group-item">Proveedor: {{$supplie->name}}</li>
+            <li class="list-group-item">Corral Actual: {{$corral->name}}</li>
         </ul>
     </div>
     <div class="col">
@@ -24,10 +33,18 @@
             @if ($health != null)
                 @if (($health->temperature >= 37.5 && $health->temperature <= 39.5) && ($health->heart_frecuency >= 70 && $health->heart_frecuency <= 80) && ($health->breathing_rate >= 15 && $health->breathing_rate <= 20) && ($health->blood_pressure >= 8 && $health->blood_pressure <= 10))
                     
-                    <li class="list-group-item list-group-item-success">Cría Saludable</li>
-
+                    <li class="list-group-item list-group-item-success">Cría Saludable
+                        @if (Auth::user()->id_position == 2 && $breeding->quarantine == 1)
+                            <a href="{{ route('quarantine.index', ['id' => $breeding->id]) }}" class="btn btn-sm btn-success">Eliminar Cuarentena</a>
+                        @endif
+                    </li>
                 @else
-                    <li class="list-group-item list-group-item-danger">Cría por enfermar</li>
+                    <li class="list-group-item list-group-item-danger">Cría por enfermar 
+                        @if (Auth::user()->id_position == 2 && $breeding->quarantine == 0)
+                            <a href="{{ route('quarantine.index', ['id' => $breeding->id]) }}" class="btn btn-sm btn-danger">Poner en cuarentena</a>
+                        @endif
+                    </li>
+                    
                 @endif
                 <li class="list-group-item @if (($health->temperature >= 37.5 && $health->temperature <= 39.5)) list-group-item-success @else list-group-item-danger @endif">Temperatura: {{$health->temperature}} °C</li>
                 <li class="list-group-item @if (($health->heart_frecuency >= 70 && $health->heart_frecuency <= 80)) list-group-item-success @else list-group-item-danger @endif">Frecuencia cardiaca: {{$health->heart_frecuency}} LPM </li>

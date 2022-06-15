@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Breeding;
 use App\Models\Supplier;
 use App\Models\Health;
+use App\Models\Corral;
 
 
 class BreedingController extends Controller
@@ -75,8 +76,9 @@ class BreedingController extends Controller
         $breeding = Breeding::find($id);
         $supplie = Supplier::find($breeding->id_supplier);
         $health = Health::find($breeding->id_health);
+        $corral = Corral::find($breeding->id_corral);
 
-        return view('breeding.show', ['breeding' => $breeding, 'supplie' => $supplie, 'health'=> $health]);
+        return view('breeding.show', ['breeding' => $breeding, 'supplie' => $supplie, 'health' => $health, 'corral' => $corral]);
     }
 
     /**
