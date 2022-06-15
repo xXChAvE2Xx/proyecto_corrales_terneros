@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Breeding;
+use App\Models\Supplier;
 
 class HomeController extends Controller
 {
@@ -23,9 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $breedings = Breeding::all();
+        $suppliers = Supplier::all();
         
-
-
-        return view('home');
+        return view('home', ['breedings' => $breedings, 'suppliers' => $suppliers]);
     }
 }
