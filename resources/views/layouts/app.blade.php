@@ -38,7 +38,7 @@
                         <a class="btn btn-outline-success me-2" href="{{ url('/') }}">
                             Inicio
                         </a>
-                        <a class="btn btn-outline-success me-2" href="{{ route('breeding.index') }}">Agregar nueva cría</a>
+                        <a class="btn btn-outline-success me-2" href="{{ route('breeding.index') }}"><i class="fa fa-plus" aria-hidden="true"></i> Agregar nueva cría</a>
                     @endauth
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
