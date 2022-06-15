@@ -11,6 +11,7 @@
                 <div class="card" style="width: 18rem; margin-right:15px; margin-top:15px;">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Example_image.svg/600px-Example_image.svg.png" class="card-img-top" alt="Ternera">
                     <div class="card-body">
+                        <h5 class="card-title">Numero de cría: {{$breeding->id}}</h5>
                         <p class="card-text">{{$breeding->description}}</p>
                     </div>
                     <ul class="list-group list-group-flush">
@@ -31,7 +32,7 @@
                             @endif
 
                             @if (Auth::user()->id_position == 3)
-                                <a href="#" class="btn btn-info">Registrar datos de sensores</a>
+                                <a href="{{ route('health.register', ['id' => $breeding->id] ) }}" class="btn btn-info">Registrar datos de sensores</a>
                             @endif
                         </div>
                     </div>  
