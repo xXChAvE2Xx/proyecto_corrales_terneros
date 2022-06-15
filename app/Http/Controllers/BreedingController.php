@@ -56,13 +56,13 @@ class BreedingController extends Controller
         $breeding->weight = $request->peso;
         $breeding->cost = $request->costo;
         $breeding->description = $request->descripcion;
-        $breeding->color_muscle = $request->marmoleo;
-        $breeding->marbling = $request->color_musculo;
+        $breeding->color_muscle = $request->color_musculo;
+        $breeding->marbling = $request->marmoleo;
         $breeding->id_supplier = $request->proveedor;
 
         $breeding->save();
 
-        return redirect()->route('breeding.index')->with('success','Se agrego la cria correctamente');
+        return redirect()->route('breeding.index')->with('success','Se agregó la cría correctamente.');
     }
 
     /**
@@ -125,18 +125,8 @@ class BreedingController extends Controller
 
         $breeding->save();
 
-        return redirect()->route('home')->with('success', 'Cria actualizada con exito');
+        return redirect()->route('home')->with('success', 'Cría actualizada con éxito.');
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
