@@ -1,0 +1,133 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Health;
+use App\Models\Breeding;
+
+class HealthController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index($id)
+    {
+        return view('health.index',['id' => $id]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request, $id)
+    {
+        $request->validate([
+            'temperature'=> 'required|numeric',
+            'heart_frecuency'=> 'required|numeric',
+            'breathing_rate' => 'required|numeric',
+            'blood_pressure' => 'required|numeric',
+        ],
+        [
+            'temperature.required' => 'El campo de la temperatura es obligatorio.',
+            'heart_frecuency.required' => 'El campo de la frecuencia cardiaca es obligatorio.',
+            'breathing_rate.required' => 'El campo de la frecuencia respiratoria es obligatorio.',
+            'blood_pressure.required' => 'El campo de la frecuencia sanguínea es obligatorio.'
+        ]); 
+
+        $health = new Health;
+
+        $health->temperature = $request->temperature;
+        $health->heart_frecuency = $request->heart_frecuency;
+        $health->breathing_rate = $request->breathing_rate;
+        $health->blood_pressure = $request->blood_pressure;
+        $health->id_breedings = $id;
+        $health->save();
+
+
+        return redirect()->route('breeding.show', ['id' => $id])->with('success','Se agregaron los datos del sensor de manera exitosa.');
+
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        return view('health.edit', ['id' => $id]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'temperature'=> 'required|numeric',
+            'heart_frecuency'=> 'required|numeric',
+            'breathing_rate' => 'required|numeric',
+            'blood_pressure' => 'required|numeric',
+        ],
+        [
+            'temperature.required' => 'El campo de la temperatura es obligatorio.',
+            'heart_frecuency.required' => 'El campo de la frecuencia cardiaca es obligatorio.',
+            'breathing_rate.required' => 'El campo de la frecuencia respiratoria es obligatorio.',
+            'blood_pressure.required' => 'El campo de la frecuencia sanguínea es obligatorio.'
+        ]); 
+
+        $health = Health::firstWhere('id_breedings', $id);
+
+        $health->temperature = $request->temperature;
+        $health->heart_frecuency = $request->heart_frecuency;
+        $health->breathing_rate = $request->breathing_rate;
+        $health->blood_pressure = $request->blood_pressure;
+        $health->id_breedings = $id;
+        $health->save();
+
+
+        return redirect()->route('breeding.show', ['id' => $id])->with('success','Se actualizó los datos del sensor de manera exitosa.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+}

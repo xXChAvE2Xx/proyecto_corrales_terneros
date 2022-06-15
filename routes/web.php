@@ -34,4 +34,7 @@ Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'i
 Route::get('/register/health/{id}', [App\Http\Controllers\HealthController::class, 'index'])->name('health.register')->middleware('auth');
 Route::post('/register/health/{id}', [App\Http\Controllers\HealthController::class, 'store'])->name('health.store');
 
+Route::get('/edit/health/{id}', [App\Http\Controllers\HealthController::class, 'edit'])->name('health.edit');
+Route::patch('/edit/health/{id}', [App\Http\Controllers\HealthController::class, 'update'])->name('health.update');
+
 

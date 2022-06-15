@@ -59,13 +59,24 @@ class BreedingController extends Controller
         ]);
 
         $breeding = new Breeding;
+        $fat_type = 0;
 
+        if(($request->peso >= 15 && $request->peso <= 25) && 
+        ($request->color_musculo >= 3 && $request->color_musculo <= 5) && 
+        ($request->marmoleo == 1 || $request->marmoleo == 2)){
+            $fat_type = 1;
+        }else{
+            $fat_type = 2;
+        }
+
+        
         $breeding->weight = $request->peso;
         $breeding->cost = $request->costo;
         $breeding->description = $request->descripcion;
         $breeding->color_muscle = $request->color_musculo;
         $breeding->marbling = $request->marmoleo;
         $breeding->id_supplier = $request->proveedor;
+        $breeding->fat_type = $fat_type;
 
         $breeding->save();
 
@@ -82,7 +93,7 @@ class BreedingController extends Controller
     {
         $breeding = Breeding::find($id);
         $supplie = Supplier::find($breeding->id_supplier);
-        $health = Health::find($breeding->id_health);
+        $health = Health::firstWhere('id_breedings', $id);
         $corral = Corral::find($breeding->id_corral);
 
         return view('breeding.show', ['breeding' => $breeding, 'supplie' => $supplie, 'health' => $health, 'corral' => $corral]);
@@ -130,13 +141,23 @@ class BreedingController extends Controller
         ]);
 
         $breeding = Breeding::find($id);
+        $fat_type = 0;
+
+        if(($request->peso >= 15 && $request->peso <= 25) && 
+        ($request->color_musculo >= 3 && $request->color_musculo <= 5) && 
+        ($request->marmoleo == 1 || $request->marmoleo == 2)){
+            $fat_type = 1;
+        }else{
+            $fat_type = 2;
+        }
 
         $breeding->weight = $request->peso;
         $breeding->cost = $request->costo;
         $breeding->description = $request->descripcion;
-        $breeding->color_muscle = $request->marmoleo;
-        $breeding->marbling = $request->color_musculo;
+        $breeding->color_muscle = $request->color_musculo;
+        $breeding->marbling = $request->marmoleo;
         $breeding->id_supplier = $request->proveedor;
+        $breeding->fat_type = $fat_type;
 
         $breeding->save();
 

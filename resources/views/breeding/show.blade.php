@@ -28,6 +28,9 @@
                 <li class="list-group-item">Corral Actual: {{$corral->name}}</li>
             @endif
         </ul>
+        @if (Auth::user()->id_position == 1)
+            <a href="{{ route('breeding.edit', ['id' => $breeding->id]) }}" class="btn btn-secondary"><i class="fa fa-pencil-square-o"></i> Editar</a>                                
+        @endif
     </div>
     <div class="col">
         <ul class="list-group">
@@ -52,8 +55,14 @@
                 <li class="list-group-item @if (($health->heart_frecuency >= 70 && $health->heart_frecuency <= 80)) list-group-item-success @else list-group-item-danger @endif">Frecuencia cardiaca: {{$health->heart_frecuency}} LPM </li>
                 <li class="list-group-item @if (($health->breathing_rate >= 15 && $health->breathing_rate <= 20)) list-group-item-success @else list-group-item-danger @endif">Frecuencia respiratoria: {{$health->breathing_rate}} RPM</li>
                 <li class="list-group-item @if (($health->blood_pressure >= 8 && $health->blood_pressure <= 10)) list-group-item-success @else list-group-item-danger @endif">Frecuencia sanguínea: {{$health->blood_pressure}} min</li>
+                @if (Auth::user()->id_position == 3)
+                    <a href="{{ route('health.update', ['id' => $breeding->id] ) }}" class="btn btn-info"> Actualizar datos de sensores</a>
+                @endif
             @else
                 <li class="list-group-item">No se ha registrado información</li>
+                @if (Auth::user()->id_position == 3)
+                    <a href="{{ route('health.register', ['id' => $breeding->id] ) }}" class="btn btn-info"> Agregar datos de sensores</a>
+                @endif
             @endif
         </ul>
     </div>
