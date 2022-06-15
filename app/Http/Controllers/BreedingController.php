@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Breeding;
-use App\Models\Position;
+use App\Models\Supplier;
 
 
 class BreedingController extends Controller
@@ -16,9 +16,9 @@ class BreedingController extends Controller
      */
     public function index()
     {
-        $positions = Position::all();
+        $supplies = Supplier::all();
 
-        return view('breeding.index', ['positions' => $positions]);
+        return view('breeding.index', ['supplies' => $supplies]);
     }
 
     /**

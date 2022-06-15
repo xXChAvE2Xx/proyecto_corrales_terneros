@@ -16,7 +16,7 @@
             @if (session('success'))
                 <h6 class="alert alert-success">{{ session('success') }}</h6> 
             @endif
-            <form action="" method="post">
+            <form action="{{route('breeding.store')}}" method="post">
                 @csrf
                 <div class="mb-3">
                     <label for="peso" class="form-label">Peso en kg</label>
@@ -54,8 +54,8 @@
                     <label for="proveedor" class="form-label">Proveedor</label>
                     <select class="form-select" name="proveedor">
                         <option selected hidden>Selecciona una opcion</option>
-                        @foreach ($positions as $position)
-                            <option value="{{$position->id}}">{{$position->position}}</option>
+                        @foreach ($supplies as $supplie)
+                            <option value="{{$supplie->id}}">{{$supplie->name}}</option>
                         @endforeach
                     </select>
                 </div>
