@@ -31,4 +31,7 @@ Route::get('/show/{id}', [App\Http\Controllers\BreedingController::class, 'show'
 Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'index'])->name('register');
 
 
+Route::get('/register/health/{id}', [App\Http\Controllers\HealthController::class, 'index'])->name('health.register')->middleware('auth');
+Route::post('/register/health/{id}', [App\Http\Controllers\HealthController::class, 'store'])->name('health.store');
+
 
