@@ -6,9 +6,9 @@
         <h6 class="alert alert-success">{{ session('success') }}</h6> 
     @endif
     <div class="row justify-content-center">
-        <div class="col-md-12 d-flex flex-nowrap">
+        <div class="col-md-12 d-flex flex-wrap">
             @foreach ($breedings as $breeding)
-                <div class="card" style="width: 18rem; margin-right:15px;">
+                <div class="card" style="width: 18rem; margin-right:15px; margin-top:15px;">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Example_image.svg/600px-Example_image.svg.png" class="card-img-top" alt="Ternera">
                     <div class="card-body">
                         <p class="card-text">{{$breeding->description}}</p>
@@ -17,23 +17,24 @@
                         <li class="list-group-item">Fecha: {{date_format($breeding->created_at,"d/m/Y H:i:s");}}</li>
                         <li class="list-group-item">Costo: {{$breeding->cost}} pesos</li>
                         <li class="list-group-item">Peso: {{$breeding->weight}} kg</li>
-                        <li class="list-group-item">Grasa tipo {{$breeding->color_muscle}}</li>
+                        @if (($breeding->weight >= 15 && $breeding->weight <= 25) && ($breeding->color_muscle >= 3 && $breeding->color_muscle <= 5) && ($breeding->marbling == 1 || $breeding->marbling == 2)) 
+                            <li class="list-group-item">Grasa tipo 1</li>
+                        @else
+                            <li class="list-group-item">Grasa tipo 2</li>
+                        @endif                        
                     </ul>
                     <div class="card-body">
                         <div class="btn-group-vertical justify-content-center" role="group">
                             <a href="{{ route('breeding.show', ['id' => $breeding->id]) }}" class="btn btn-primary">Ver más información</a>
                             @if (Auth::user()->id_position == 1)
-                                <a href="{{ route('breeding.edit', ['id' => $breeding->id]) }}" class="btn btn-secondary"><i class="fa fa-pencil-square-o"></i> Editar</a>
+                                <a href="{{ route('breeding.edit', ['id' => $breeding->id]) }}" class="btn btn-secondary"><i class="fa fa-pencil-square-o"></i> Editar</a>                                
                             @endif
 
                             @if (Auth::user()->id_position == 3)
                                 <a href="#" class="btn btn-info">Registrar datos de sensores</a>
                             @endif
                         </div>
-                        
                     </div>  
-
-                    
                 </div>
             @endforeach
         </div>
