@@ -71,7 +71,11 @@ class BreedingController extends Controller
      */
     public function show($id)
     {
-        //
+        $breeding = Breeding::find($id);
+        $supplies = Supplier::all();
+
+        return view('breeding.edit', ['breeding' => $breeding, 'supplies' => $supplies]);
+
     }
 
     /**
@@ -94,7 +98,29 @@ class BreedingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'peso'=> 'required|numeric',
+            'costo'=> 'required|numeric',
+            'color_musculo' => 'required',
+            'marmoleo' => 'required',
+            'descripcion'=> 'required',
+            'proveedor' => 'required'
+
+        ]);
+
+        $breeding = Breeding::find($id);
+
+        $breeding->weight = $request->peso;
+        $breeding->cost = $request->costo;
+        $breeding->description = $request->descripcion;
+        $breeding->color_muscle = $request->marmoleo;
+        $breeding->marbling = $request->color_musculo;
+        $breeding->id_supplier = $request->proveedor;
+
+        $breeding->save();
+
+        return redirect()->route('home')->with('success', 'Cria actualizada con exito');
+
     }
 
     /**
