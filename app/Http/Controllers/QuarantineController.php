@@ -77,6 +77,10 @@ class QuarantineController extends Controller
         $request->validate([
             'quarantine'=> 'required|numeric',
             'corral'=> 'required'
+        ],
+        [
+            'quarantine.required' => 'El campo cuarentena es obligatorio.',
+            'corral.required' => 'El campo corral es obligatorio.'
         ]);
 
         $breeding = Breeding::find($id);

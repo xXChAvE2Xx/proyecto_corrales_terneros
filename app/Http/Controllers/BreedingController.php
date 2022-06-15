@@ -48,7 +48,14 @@ class BreedingController extends Controller
             'marmoleo' => 'required',
             'descripcion'=> 'required',
             'proveedor' => 'required'
-
+        ],
+        [
+            'peso.required' => 'El campo peso es obligatorio.',
+            'costo.required' => 'El campo costo es obligatorio.',
+            'color_musculo.required' => 'El campo color del musculo es obligatorio.',
+            'marmoleo.required' => 'El campo marmoleo es obligatorio.',
+            'descripcion.required' => 'El campo descripción es obligatorio.',
+            'proveedor.required' => 'El campo proveedor es obligatorio.'
         ]);
 
         $breeding = new Breeding;
@@ -112,6 +119,14 @@ class BreedingController extends Controller
             'descripcion'=> 'required',
             'proveedor' => 'required'
 
+        ],
+        [
+            'peso.required' => 'El campo peso es obligatorio.',
+            'costo.required' => 'El campo costo es obligatorio.',
+            'color_musculo.required' => 'El campo color del musculo es obligatorio.',
+            'marmoleo.required' => 'El campo marmoleo es obligatorio.',
+            'descripcion.required' => 'El campo descripción es obligatorio.',
+            'proveedor.required' => 'El campo proveedor es obligatorio.'
         ]);
 
         $breeding = Breeding::find($id);
