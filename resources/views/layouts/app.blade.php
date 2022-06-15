@@ -33,12 +33,13 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <a class="btn btn-outline-success me-2" href="{{ url('/') }}">
-                        Inicio
-                    </a>
-                    <a class="btn btn-outline-success me-2" href="{{ route('breeding.index') }}">Agregar nueva cría</a>
-
+                    @auth
+                        <!-- Left Side Of Navbar -->
+                        <a class="btn btn-outline-success me-2" href="{{ url('/') }}">
+                            Inicio
+                        </a>
+                        <a class="btn btn-outline-success me-2" href="{{ route('breeding.index') }}">Agregar nueva cría</a>
+                    @endauth
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
