@@ -34,9 +34,10 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
+                    <a class="btn btn-outline-success me-2" href="{{ url('/') }}">
+                        Inicio
+                    </a>
+                    <a class="btn btn-outline-success me-2" href="{{ route('breeding.index') }}">Agregar nueva cría</a>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
@@ -54,8 +55,6 @@
                                 </li>
                             @endif
                         @else
-                            <a class="nav-link" href="{{ route('breeding.index') }}">Agregar nueva cria</a>
-
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
