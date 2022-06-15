@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('healths', function (Blueprint $table) {
             $table->id();
-            $table->float('temperature');
-            $table->integer('heart_frecuency');
-            $table->integer('breathing_rate');
-            $table->integer('blood_pressure');
+            $table->float('temperature')->nullable();
+            $table->integer('heart_frecuency')->nullable();
+            $table->integer('breathing_rate')->nullable();
+            $table->integer('blood_pressure')->nullable();
             $table->timestamps();
         });
     }
