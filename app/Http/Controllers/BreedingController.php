@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Breeding;
 use App\Models\Supplier;
+use App\Models\Health;
 
 
 class BreedingController extends Controller
@@ -71,7 +72,11 @@ class BreedingController extends Controller
      */
     public function show($id)
     {
-        
+        $breeding = Breeding::find($id);
+        $supplie = Supplier::find($breeding->id_supplier);
+        $health = Health::find($breeding->id_health);
+
+        return view('breeding.show', ['breeding' => $breeding, 'supplie' => $supplie, 'health'=> $health]);
     }
 
     /**
