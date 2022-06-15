@@ -27,9 +27,8 @@
                     <input type="number" class="form-control" name="costo" placeholder="1560">
                 </div>
                 <div class="mb-3">
-                    <label for="color_musculo" class="form-label">Color del musculo</label>
+                    <label for="color_musculo" class="form-label">Color del músculo</label>
                     <select class="form-select" name="color_musculo">
-                    <option selected hidden>Selecciona una opcion</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -42,7 +41,6 @@
                 <div class="mb-3">
                     <label for="marmoleo" class="form-label">Marmoleo</label>
                     <select class="form-select" name="marmoleo">
-                        <option selected hidden>Selecciona una opcion</option>
                         <option value="1">Calidad 1</option>
                         <option value="2">Calidad 2</option>
                         <option value="3">Calidad 3</option>
@@ -53,20 +51,18 @@
                 <div class="mb-3">
                     <label for="proveedor" class="form-label">Proveedor</label>
                     <select class="form-select" name="proveedor">
-                        <option selected hidden>Selecciona una opcion</option>
                         @foreach ($supplies as $supplie)
                             <option value="{{$supplie->id}}">{{$supplie->name}}</option>
                         @endforeach
                     </select>
                 </div>
                 
-
-
                 <div class="mb-3">
-                    <label for="descripcion" class="form-label">Descripcion</label>
+                    <label for="descripcion" class="form-label">Descripción</label>
                     <textarea class="form-control" name="descripcion" rows="3"></textarea>
                 </div>
-                <button class="btn btn-info">Agregar nueva cria</button>
+                <button class="btn btn-info">Agregar nueva cría</button>
+                <a class="btn btn-secondary" href="{{route('home')}}">Regresar</a>
             </form>
         </div>
     </div>
