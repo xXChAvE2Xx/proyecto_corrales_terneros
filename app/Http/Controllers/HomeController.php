@@ -26,8 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $breedings = Breeding::all();
-        $suppliers = Supplier::all();
         
-        return view('home', ['breedings' => $breedings, 'suppliers' => $suppliers]);
+        return view('home', ['breedings' => $breedings]);
     }
 }
