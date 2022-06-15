@@ -38,7 +38,9 @@
                         <a class="btn btn-outline-success me-2" href="{{ url('/') }}">
                             Inicio
                         </a>
+                        @if (Auth::user()->id_position == 1)
                         <a class="btn btn-outline-success me-2" href="{{ route('breeding.index') }}"><i class="fa fa-plus" aria-hidden="true"></i> Agregar nueva cría</a>
+                        @endif
                     @endauth
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
