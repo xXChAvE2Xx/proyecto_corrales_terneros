@@ -24,7 +24,9 @@
             <li class="list-group-item">Descripción: {{$breeding->description}}</li>
             <li class="list-group-item">Fecha de registro: {{ date_format($breeding->created_at,"d/m/Y H:i:s"); }}</li>
             <li class="list-group-item">Proveedor: {{$supplie->name}}</li>
-            <li class="list-group-item">Corral Actual: {{$corral->name}}</li>
+            @if ($breeding->quarantine == 1)
+                <li class="list-group-item">Corral Actual: {{$corral->name}}</li>
+            @endif
         </ul>
     </div>
     <div class="col">
