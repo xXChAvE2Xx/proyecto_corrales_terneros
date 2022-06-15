@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Breeding;
-use App\Models\Supplier;
+use App\Models\Position;
+
 
 class BreedingController extends Controller
 {
@@ -15,10 +16,9 @@ class BreedingController extends Controller
      */
     public function index()
     {
-        $breedings = Breeding::all();
-        $suppliers = Supplier::all();
-        
-        return view('home', ['breedings' => $breedings, 'suppliers' => $suppliers]);
+        $positions = Position::all();
+
+        return view('breeding.index', ['positions' => $positions]);
     }
 
     /**
@@ -39,7 +39,28 @@ class BreedingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'peso'=> 'required|numeric',
+            'costo'=> 'required|numeric',
+            'color_musculo' => 'required',
+            'marmoleo' => 'required',
+            'descripcion'=> 'required',
+            'proveedor' => 'required'
+
+        ]);
+
+        $breeding = new Breeding;
+
+        $breeding->weight = $request->peso;
+        $breeding->cost = $request->costo;
+        $breeding->description = $request->descripcion;
+        $breeding->color_muscle = $request->marmoleo;
+        $breeding->marbling = $request->color_musculo;
+        $breeding->id_supplier = $request->proveedor;
+
+        $breeding->save();
+
+        return redirect()->route('breeding.index')->with('success','Se agrego la cria correctamente');
     }
 
     /**
