@@ -71,11 +71,7 @@ class BreedingController extends Controller
      */
     public function show($id)
     {
-        $breeding = Breeding::find($id);
-        $supplies = Supplier::all();
-
-        return view('breeding.edit', ['breeding' => $breeding, 'supplies' => $supplies]);
-
+        
     }
 
     /**
@@ -86,7 +82,10 @@ class BreedingController extends Controller
      */
     public function edit($id)
     {
-        //
+        $breeding = Breeding::find($id);
+        $supplies = Supplier::all();
+
+        return view('breeding.edit', ['breeding' => $breeding, 'supplies' => $supplies]);
     }
 
     /**
