@@ -98,7 +98,9 @@ class HealthController extends Controller
      */
     public function edit($id)
     {
-        return view('health.edit', ['id' => $id]);
+        $health = Health::find($id);
+
+        return view('health.edit', ['id' => $id, 'health' => $health]);
     }
 
     /**
