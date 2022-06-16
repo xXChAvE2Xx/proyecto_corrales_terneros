@@ -13297,3 +13297,16 @@ textarea.form-control-lg {
   overflow: visible;
   clip: auto;
 }
+@media screen and (max-width: 1199px) {
+    #show {
+        flex-direction: column !important;
+    }
+    #show-img {
+        margin-right: auto !important;
+        margin-left: auto !important;
+        margin-bottom: 20px;
+        width: 85%;
+        display: block !important;
+    }
+}
+
