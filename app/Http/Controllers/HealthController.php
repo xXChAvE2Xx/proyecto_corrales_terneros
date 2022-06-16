@@ -50,6 +50,8 @@ class HealthController extends Controller
         ]); 
 
         $health = new Health;
+        $breeding = new Breeding;
+        $sick = NULL;
 
         $health->temperature = $request->temperature;
         $health->heart_frecuency = $request->heart_frecuency;
@@ -58,6 +60,20 @@ class HealthController extends Controller
         $health->id_breedings = $id;
         $health->save();
 
+        //Validamos si la cria se encuentra sana o no.
+        if(($request->temperature >= 37.5 && $request->temperature <= 39.5) && 
+            ($request->heart_frecuency >= 70 && $request->heart_frecuency <= 80) && 
+            ($request->breathing_rate >= 15 && $request->breathing_rate <= 20) && 
+            ($request->blood_pressure >= 8 && $request->blood_pressure <= 10)){
+
+            $sick = 0;
+        }else{
+            $sick = 1;
+        }
+
+        $breeding = Breeding::find($id);
+        $breeding->sick = $sick;
+        $breeding->save();
 
         return redirect()->route('breeding.show', ['id' => $id])->with('success','Se agregaron los datos del sensor de manera exitosa.');
 
@@ -116,6 +132,20 @@ class HealthController extends Controller
         $health->id_breedings = $id;
         $health->save();
 
+        //Validamos si la cria se encuentra sana o no.
+        if(($request->temperature >= 37.5 && $request->temperature <= 39.5) && 
+            ($request->heart_frecuency >= 70 && $request->heart_frecuency <= 80) && 
+            ($request->breathing_rate >= 15 && $request->breathing_rate <= 20) && 
+            ($request->blood_pressure >= 8 && $request->blood_pressure <= 10)){
+
+            $sick = 0;
+        }else{
+            $sick = 1;
+        }
+
+        $breeding = Breeding::find($id);
+        $breeding->sick = $sick;
+        $breeding->save();
 
         return redirect()->route('breeding.show', ['id' => $id])->with('success','Se actualizó los datos del sensor de manera exitosa.');
     }

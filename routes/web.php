@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home/category/{id}', [App\Http\Controllers\HomeController::class, 'show'])->name('category.show');
 
 Route::get('/breeding', [App\Http\Controllers\BreedingController::class, 'index'])->name('breeding.index')->middleware('auth');
 Route::post('/breeding', [App\Http\Controllers\BreedingController::class, 'store'])->name('breeding.store');

@@ -64,14 +64,23 @@
                                    Mostrar
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" onclick="fat_type(0);">
+                                    <a class="dropdown-item" href="{{ route('home') }}">
                                         Todos
                                     </a>
-                                    <a class="dropdown-item" onclick="fat_type(1);">
+                                    <a class="dropdown-item" href="{{ route('category.show', ['id' => 1])}}">
                                         Grasa tipo 1
                                     </a>
-                                    <a class="dropdown-item" onclick="fat_type(2);">
+                                    <a class="dropdown-item" href="{{ route('category.show', ['id' => 2])}}">
                                         Grasa tipo 2
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('category.show', ['id' => 3])}}">
+                                        Crías por enfermar
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('category.show', ['id' => 4])}}">
+                                        Crías saludables
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('category.show', ['id' => 5])}}">
+                                        Crías en cuarentena
                                     </a>
                                 </div>
                             </li>

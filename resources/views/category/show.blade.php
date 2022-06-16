@@ -5,6 +5,23 @@
     @if (session('success'))
         <h6 class="alert alert-success">{{ session('success') }}</h6> 
     @endif
+    <h3 class="text-center">Ordenado por 
+        @if ($id == 1)
+            grasa tipo 1        
+        @endif
+        @if ($id == 2)
+            grasa tipo 2        
+        @endif
+        @if ($id == 3)
+            crías enfermas        
+        @endif
+        @if ($id == 4)
+            crías sanas        
+        @endif
+        @if ($id == 5)
+            crías en cuarentena        
+        @endif
+    </h3>
     <div class="row justify-content-center">
         <div class="col-md-12 d-flex flex-wrap">
             @foreach ($breedings as $breeding)

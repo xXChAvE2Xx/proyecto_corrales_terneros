@@ -36,20 +36,19 @@
         <ul class="list-group">
             <li class="list-group-item active">Salud de la cría</li>
             @if ($health != null)
-                @if (($health->temperature >= 37.5 && $health->temperature <= 39.5) && ($health->heart_frecuency >= 70 && $health->heart_frecuency <= 80) && ($health->breathing_rate >= 15 && $health->breathing_rate <= 20) && ($health->blood_pressure >= 8 && $health->blood_pressure <= 10))
-                    
+                @if ($breeding->sick == 0) 
                     <li class="list-group-item list-group-item-success">Cría Saludable
                         @if (Auth::user()->id_position == 2 && $breeding->quarantine == 1)
                             <a href="{{ route('quarantine.index', ['id' => $breeding->id]) }}" class="btn btn-sm btn-success">Eliminar Cuarentena</a>
                         @endif
                     </li>
-                @else
+                @endif
+                @if($breeding->sick == 1)
                     <li class="list-group-item list-group-item-danger">Cría por enfermar 
                         @if (Auth::user()->id_position == 2 && $breeding->quarantine == 0)
                             <a href="{{ route('quarantine.index', ['id' => $breeding->id]) }}" class="btn btn-sm btn-danger">Poner en cuarentena</a>
                         @endif
-                    </li>
-                    
+                    </li> 
                 @endif
                 <li class="list-group-item @if (($health->temperature >= 37.5 && $health->temperature <= 39.5)) list-group-item-success @else list-group-item-danger @endif">Temperatura: {{$health->temperature}} °C</li>
                 <li class="list-group-item @if (($health->heart_frecuency >= 70 && $health->heart_frecuency <= 80)) list-group-item-success @else list-group-item-danger @endif">Frecuencia cardiaca: {{$health->heart_frecuency}} LPM </li>

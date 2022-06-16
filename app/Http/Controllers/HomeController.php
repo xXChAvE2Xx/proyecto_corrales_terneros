@@ -29,4 +29,30 @@ class HomeController extends Controller
         
         return view('home', ['breedings' => $breedings]);
     }
+
+     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+
+        if ($id == 1 || $id == 2) {
+            $breedings = Breeding::select("*")->where('fat_type', $id)->get();
+
+        }elseif ($id == 3 || $id == 4) {
+
+            if($id == 3)
+                $breedings = Breeding::select("*")->where('sick', 1)->get();
+            else
+                $breedings = Breeding::select("*")->where('sick', 0)->get();
+
+        }elseif($id == 5){
+            $breedings = Breeding::select("*")->where('quarantine', 1)->get();
+        }
+
+        return view('category.show', ['breedings' => $breedings, 'id' => $id]);
+    }
 }
