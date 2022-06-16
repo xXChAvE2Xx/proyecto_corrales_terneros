@@ -98,7 +98,7 @@ class HealthController extends Controller
      */
     public function edit($id)
     {
-        $health = Health::find($id);
+        $health = Health::firstWhere('id_breedings', $id);
 
         return view('health.edit', ['id' => $id, 'health' => $health]);
     }
