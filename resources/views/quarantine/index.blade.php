@@ -26,7 +26,7 @@
                         @endforeach
                     </select>
                 </div>
-                <button class="btn btn-warning">Poner en cuarentena</button>
+                <button class="btn btn-warning">@if ($breeding->quarantine == 0) Poner en cuarentena @else Quitar cuarentena @endif</button>
                 <a class="btn btn-secondary" href="{{route('breeding.show', ['id' => $breeding->id])}}">Regresar</a>
             </form>
         </div>
