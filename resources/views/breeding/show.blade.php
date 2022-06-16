@@ -2,7 +2,8 @@
 
 @section('content')
 <div class="container">
-  <div class="row">
+  <div class="row" id="show">
+    <h2>Cría No.: {{ $breeding->id }}</h2>
     @if (session('success'))
         <h6 class="alert alert-success">{{ session('success') }}</h6> 
     @endif
@@ -12,7 +13,7 @@
     @endif
 
     <div class="col">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Example_image.svg/600px-Example_image.svg.png">
+    <img id="show-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Example_image.svg/600px-Example_image.svg.png">
     </div>
     <div class="col">
         <ul class="list-group">
@@ -28,6 +29,7 @@
                 <li class="list-group-item">Corral Actual: {{$corral->name}}</li>
             @endif
         </ul>
+        <br>
         @if (Auth::user()->id_position == 1)
             <a href="{{ route('breeding.edit', ['id' => $breeding->id]) }}" class="btn btn-secondary"><i class="fa fa-pencil-square-o"></i> Editar</a>                                
         @endif

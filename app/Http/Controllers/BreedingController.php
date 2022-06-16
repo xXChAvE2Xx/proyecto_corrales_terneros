@@ -161,7 +161,7 @@ class BreedingController extends Controller
 
         $breeding->save();
 
-        return redirect()->route('home')->with('success', 'Cría actualizada con éxito.');
+        return redirect()->route('breeding.show', ['id' => $id])->with('success', 'Cría actualizada con éxito.');
 
     }
 
