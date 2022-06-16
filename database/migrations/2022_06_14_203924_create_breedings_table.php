@@ -8,7 +8,8 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
+     * sick -> 1 = Enfermo
+     * sick -> 0 = No enfermo
      * @return void
      */
     public function up()
@@ -21,6 +22,7 @@ return new class extends Migration
             $table->integer('color_muscle');
             $table->integer('marbling');
             $table->integer('fat_type');
+            $table->integer('sick')->unsigned()->nullable()->default(0);
             $table->integer('quarantine')->unsigned()->default(0);
             $table->timestamps();
         });
