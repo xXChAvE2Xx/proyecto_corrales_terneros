@@ -16,7 +16,7 @@
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">Fecha: {{date_format($breeding->created_at,"d/m/Y H:i:s");}}</li>
-                        <li class="list-group-item">Costo: {{$breeding->cost}} pesos</li>
+                        <li class="list-group-item">Costo: ${{$breeding->cost}} pesos</li>
                         <li class="list-group-item">Peso: {{$breeding->weight}} kg</li>
                         <li class="list-group-item" id="grasa-1">Grasa tipo {{ $breeding->fat_type }}</li>
                         @if ($breeding->sick == 0)

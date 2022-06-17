@@ -19,7 +19,7 @@
         <ul class="list-group">
             <li class="list-group-item active">Información de la cría </li>
             <li class="list-group-item">Peso: {{$breeding->weight}} Kg</li>
-            <li class="list-group-item">Costo: {{$breeding->cost}} pesos</li>
+            <li class="list-group-item">Costo: ${{$breeding->cost}} pesos</li>
             <li class="list-group-item">Color de Musculo: {{$breeding->color_muscle}}</li>
             <li class="list-group-item">Marmoleo: Calidad {{$breeding->marbling}}</li>
             <li class="list-group-item">Descripción: {{$breeding->description}}</li>
