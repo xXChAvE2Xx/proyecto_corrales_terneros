@@ -10,3 +10,7 @@
         display: block !important;
     }
 }
+
+#descripcion {
+    resize: none;
+}
