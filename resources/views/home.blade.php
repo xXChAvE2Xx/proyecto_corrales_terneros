@@ -12,7 +12,7 @@
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Example_image.svg/600px-Example_image.svg.png" class="card-img-top" alt="Ternera">
                     <div class="card-body">
                         <h5 class="card-title">Numero de cría: {{$breeding->id}}</h5>
-                        <p class="card-text">{{$breeding->description}}</p>
+                        <p class="card-text text-justify">{{$breeding->description}}</p>
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">Fecha: {{date_format($breeding->created_at,"d/m/Y H:i:s");}}</li>

@@ -14,3 +14,7 @@
 #descripcion {
     resize: none;
 }
+
+.text-justify {
+    text-align: justify;
+}
