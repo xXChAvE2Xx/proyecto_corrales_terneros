@@ -3,6 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
+        <h2>Se está editando la cría No.: {{ $breeding->id }}</h2>
             @if (count($errors) > 0)
             <div class = "alert alert-danger">
                 <ul>
