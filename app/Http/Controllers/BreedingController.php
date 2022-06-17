@@ -46,7 +46,7 @@ class BreedingController extends Controller
             'costo'=> 'required|numeric',
             'color_musculo' => 'required',
             'marmoleo' => 'required',
-            'descripcion'=> 'required',
+            'descripcion'=> 'required|min:6|max:255',
             'proveedor' => 'required'
         ],
         [
@@ -55,7 +55,10 @@ class BreedingController extends Controller
             'color_musculo.required' => 'El campo color del musculo es obligatorio.',
             'marmoleo.required' => 'El campo marmoleo es obligatorio.',
             'descripcion.required' => 'El campo descripción es obligatorio.',
-            'proveedor.required' => 'El campo proveedor es obligatorio.'
+            'proveedor.required' => 'El campo proveedor es obligatorio.',
+            'descripcion.max' => 'La descripción no debe superar los 255 caracteres.',
+            'descripcion.min' => 'La descripción debe tener al menos 6 caracteres.'
+            
         ]);
 
         $breeding = new Breeding;
