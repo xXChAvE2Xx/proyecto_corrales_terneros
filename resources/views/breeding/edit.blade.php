@@ -60,7 +60,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="descripcion" class="form-label">Descripcion</label>
-                    <textarea class="form-control" name="descripcion" rows="3">{{ $breeding->description }}</textarea>
+                    <textarea class="form-control" id="descripcion" name="descripcion" rows="3" cols="10" onKeyDown="valida_num_caracteres()" onKeyUp="valida_num_caracteres()">{{ $breeding->description }}</textarea>
+                    <p class="text-end fw-light text-secondary" id="msg-caracteres"></p>
                 </div>
                 <button class="btn btn-primary">Editar cría</button>
                 <a class="btn btn-secondary" href="{{ route('breeding.show', ['id' => $breeding->id]) }}">Regresar</a>
