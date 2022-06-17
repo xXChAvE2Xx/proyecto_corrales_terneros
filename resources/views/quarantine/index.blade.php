@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
+    <h5>Poner en cuarentena la cría No.: {{ $breeding->id }}</h5>
         <div class="row justify-content-center">
             @if (count($errors) > 0)
             <div class="alert alert-danger">
