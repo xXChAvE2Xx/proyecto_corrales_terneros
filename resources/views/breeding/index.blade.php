@@ -59,7 +59,8 @@
                 
                 <div class="mb-3">
                     <label for="descripcion" class="form-label">Descripción</label>
-                    <textarea class="form-control" name="descripcion" rows="3"></textarea>
+                    <textarea class="form-control" id="descripcion" name="descripcion" rows="3" cols="10" onKeyDown="valida_num_caracteres()" onKeyUp="valida_num_caracteres()"></textarea>
+                    <p class="text-end fw-light text-secondary" id="msg-caracteres">Máximo de caracteres permitiros: 255</p>
                 </div>
                 <button class="btn btn-info">Agregar nueva cría</button>
                 <a class="btn btn-secondary" href="{{route('home')}}">Regresar</a>
